@@ -9,7 +9,7 @@ class TestConvertCodeBlock(unittest.TestCase):
 def greet_person(name):
     print(f"hello, {name}")
 ```"""
-        self.assertEqual(convert_code_block(code_block).to_html(), "<code><pre>def greet_person(name):&NewLine;    print(f\"hello, {name}\")</pre></code>")
+        self.assertEqual(convert_code_block(code_block).to_html(), "<pre><code>def greet_person(name):&NewLine;    print(f\"hello, {name}\")</code></pre>")
 
         code_block = """```
 def greet_person(name):
@@ -17,12 +17,12 @@ def greet_person(name):
 
 print(greet_person("John"))
 ```"""
-        self.assertEqual(convert_code_block(code_block).to_html(), "<code><pre>def greet_person(name):&NewLine;    return f\"hello, {name}\"&NewLine;&NewLine;print(greet_person(\"John\"))</pre></code>")
+        self.assertEqual(convert_code_block(code_block).to_html(), "<pre><code>def greet_person(name):&NewLine;    return f\"hello, {name}\"&NewLine;&NewLine;print(greet_person(\"John\"))</code></pre>")
 
         code_block = """```
 print("hello")
 ```"""
-        self.assertEqual(convert_code_block(code_block).to_html(), "<code><pre>print(\"hello\")</pre></code>")
+        self.assertEqual(convert_code_block(code_block).to_html(), "<pre><code>print(\"hello\")</code></pre>")
 
         # empty code block
         code_block = """```
